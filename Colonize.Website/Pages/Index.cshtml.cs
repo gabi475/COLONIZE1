@@ -31,6 +31,7 @@ namespace Colonize.Website.Pages
         // HTTP GET /index
         public void OnGet()
         {
+          //  ViewData["Message"] = "Hello World!";
             VoyageList = context.Voyage
                 .Include(x => x.Destination)
                 .ToList();
