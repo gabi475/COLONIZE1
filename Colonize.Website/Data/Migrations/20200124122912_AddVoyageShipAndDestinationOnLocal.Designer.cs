@@ -4,14 +4,16 @@ using Colonize.Website.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Colonize.Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200124122912_AddVoyageShipAndDestinationOnLocal")]
+    partial class AddVoyageShipAndDestinationOnLocal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,10 +113,10 @@ namespace Colonize.Website.Data.Migrations
                     b.Property<DateTime>("DepartureAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DestinationId")
+                    b.Property<int?>("DestinationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShipId")
+                    b.Property<int?>("ShipId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -123,25 +125,7 @@ namespace Colonize.Website.Data.Migrations
 
                     b.HasIndex("ShipId");
 
-                    b.ToTable("Voyage");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ArrivalAt = new DateTime(2024, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartureAt = new DateTime(2024, 6, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DestinationId = 1,
-                            ShipId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ArrivalAt = new DateTime(2029, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartureAt = new DateTime(2028, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DestinationId = 2,
-                            ShipId = 2
-                        });
+                    b.ToTable("Voyages");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -348,15 +332,11 @@ namespace Colonize.Website.Data.Migrations
                 {
                     b.HasOne("Colonize.Website.Entities.Destination", "Destination")
                         .WithMany()
-                        .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DestinationId");
 
                     b.HasOne("Colonize.Website.Entities.Ship", "Ship")
                         .WithMany()
-                        .HasForeignKey("ShipId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShipId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

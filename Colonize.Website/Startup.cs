@@ -32,7 +32,9 @@ namespace Colonize.Website
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddRazorPages();
+            services.AddRazorPages()
+                .AddRazorRuntimeCompilation();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +52,8 @@ namespace Colonize.Website
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithRedirects("/errors/{0}");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -60,8 +64,9 @@ namespace Colonize.Website
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapRazorPages();   // /product/create
             });
         }
     }
 }
+

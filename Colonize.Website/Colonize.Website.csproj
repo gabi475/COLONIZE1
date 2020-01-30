@@ -5,13 +5,29 @@
     <UserSecretsId>aspnet-Colonize.Website-DBEC150C-4EB7-41E2-BB61-1A5AD71648B5</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200124102345_AddVoyageShipAndDestination.cs" />
+    <Compile Remove="Data\Migrations\20200124102345_AddVoyageShipAndDestination.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200124114442_SeedDatabaseWithShips.cs" />
+    <Compile Remove="Data\Migrations\20200124114442_SeedDatabaseWithShips.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RunTimeCompilation" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Pages\Errors\" />
   </ItemGroup>
 
 </Project>
