@@ -1,0 +1,48 @@
+﻿@page
+@model Colonize.Website.Pages.Admin.Ship.NewModel
+@{
+    ViewData["Title"] = "New";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<form>
+    <div class="row">
+        <div class="col-2">
+            <div class="form-group">
+                <label>Namn</label>
+                <input type="text"
+                       name="name"
+                       class="form-control"
+                       required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Beskrivning</label>
+                <textarea class="form-control" rows="4" name="description" required></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label>Image URL</label>
+                <input type="url" class="form-control" name="imageUrl" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <div class="form-group">
+                <label>Kapacitet</label>
+                <input type="number" class="form-control" name="capacity" required>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        Skicka
+    </button>
+</form>
+
